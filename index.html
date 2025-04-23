@@ -125,8 +125,8 @@
 
     .chat-avatar {
       position: absolute;
-      top: -10px;
-      right: -10px;
+      top: 0;
+      right: 0;
       width: 32px;
       height: 32px;
       border-radius: 50%;
@@ -136,13 +136,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 5px;  /* 중앙에 배치하기 위한 여백 */
     }
 
     .chat-avatar svg {
-      width: 32px;  /* 크기를 키움 */
-      height: 32px; /* 크기를 키움 */
-      fill: #0288d1;
+      width: 22px;  /* 눈꽃의 크기 */
+      height: 22px; /* 눈꽃의 크기 */
+      fill: url(#grad1); /* 하늘색과 흰색 그라디언트 */
     }
+
+    /* 그라디언트 정의 */
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color: #00bcd4; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #ffffff; stop-opacity: 1" />
+        </linearGradient>
+      </defs>
+    </svg>
   </style>
 </head>
 <body>
@@ -181,7 +192,7 @@
 
       avatar.innerHTML = `
         <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 0l2 12 6-10 4 4-10 6 12 2-2 4-12-2 6 10-4 4-6-10-2 12h-4l-2-12-6 10-4-4 10-6-12-2 2-4 12 2-6-10 4-4 6 10 2-12h4z" fill="#0288d1"/>
+          <path d="M32 0l2 12 6-10 4 4-10 6 12 2-2 4-12-2 6 10-4 4-6-10-2 12h-4l-2-12-6 10-4-4 10-6-12-2 2-4 12 2-6-10 4-4 6 10 2-12h4z" fill="url(#grad1)"/>
         </svg>
       `;
 
