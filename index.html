@@ -87,18 +87,14 @@
 
     .chat-avatar {
       position: absolute;
-      top: -20px;
-      right: -50px;
-      width: 50px;
-      height: 50px;
-    }
-
-    .chat-avatar img {
-      width: 50px;
-      height: 50px;
-      object-fit: cover;
+      top: -10px;
+      right: -10px;
+      width: 28px;
+      height: 28px;
+      background-image: url("/mnt/data/d1a2fe25-ad34-4713-926c-c53ab418ae91.png");
+      background-size: cover;
       border-radius: 50%;
-      transform: rotate(40deg);
+      border: 1px solid #81d4fa;
     }
 
     @keyframes pop-in {
@@ -146,7 +142,7 @@
     <div class="chat-messages" id="messages"></div>
     <div class="chat-input">
       <input type="text" id="chat-input" placeholder="메시지를 입력하세요..." />
-      <button id="send-btn">💬</button>
+      <button id="send-btn">❄️</button>
     </div>
   </div>
 
@@ -173,7 +169,6 @@
 
       const avatar = document.createElement("div");
       avatar.className = "chat-avatar";
-      avatar.innerHTML = '<img src="https://cdn.pixabay.com/photo/2017/08/30/10/07/cat-2694937_960_720.jpg" alt="귀여운 고양이" />';
 
       box.appendChild(avatar);
       message.appendChild(box);
