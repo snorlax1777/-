@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>설하임 채팅</title>
+  <title>치지직 청청아 채팅</title>
 
   <!-- 폰트 -->
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Gothic+Coding&display=swap" rel="stylesheet" />
 
   <style>
     body {
@@ -32,26 +32,21 @@
     }
 
     .chat-header {
-      background-color: #b3e5fc;
-      color: #0288d1;
+      background-color: #dbe8f5;  /* 연한 남색 */
+      color: #0d47a1;  /* 진한 남색 */
       padding: 15px;
       text-align: center;
-      font-size: 18px;
+      font-size: 22px;
       font-weight: bold;
-      animation: glow 2s infinite;
-    }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #4fc3f7; }
-      50% { text-shadow: 0 0 10px #81d4fa; }
-      100% { text-shadow: 0 0 5px #4fc3f7; }
+      font-family: 'Nanum Gothic Coding', sans-serif;
     }
 
     .chat-messages {
       flex-grow: 1;
-      background-color: #e6f7fb;
+      background-color: #f2f6fa;  /* 흰색 + 연남색 */
       padding: 15px;
       overflow-y: auto;
+      max-height: 400px;
     }
 
     .message {
@@ -61,8 +56,8 @@
     }
 
     .cat-box {
-      background-color: #daf2f9;
-      border: 2px dashed #81d4fa;
+      background-color: #ffffff;
+      border: 2px dashed #0d47a1;
       border-radius: 15px;
       padding: 10px 14px;
       max-width: 75%;
@@ -81,20 +76,8 @@
       width: 0;
       height: 0;
       border-top: 10px solid transparent;
-      border-right: 10px solid #81d4fa;
+      border-right: 10px solid #0d47a1;
       border-bottom: 10px solid transparent;
-    }
-
-    .chat-avatar {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      width: 28px;
-      height: 28px;
-      background-image: url("/mnt/data/d1a2fe25-ad34-4713-926c-c53ab418ae91.png");
-      background-size: cover;
-      border-radius: 50%;
-      border: 1px solid #81d4fa;
     }
 
     @keyframes pop-in {
@@ -102,19 +85,67 @@
       80% { transform: scale(1.05); }
       100% { opacity: 1; transform: scale(1); }
     }
+
+    .chat-input {
+      display: flex;
+      padding: 12px;
+      background-color: #ffffff;
+      border-top: 2px solid #dbe8f5;
+    }
+
+    .chat-input input {
+      flex-grow: 1;
+      border: 2px solid #0d47a1;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 14px;
+      background-color: #ffffff;
+    }
+
+    .chat-input button {
+      margin-left: 8px;
+      background-color: #0d47a1;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .chat-input button:hover {
+      background-color: #093170;
+    }
+
+    .chat-avatar {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <div class="chat-container">
-    <div class="chat-header">설하임</div>
+    <div class="chat-header">치지직 청청아</div>
     <div class="chat-messages" id="messages"></div>
+    <div class="chat-input">
+      <input type="text" id="chat-input" placeholder="메시지를 입력하세요..." />
+      <button id="send-btn">💬</button>
+    </div>
   </div>
 
   <script>
-    // 여기에 메시지를 동적으로 추가하는 스크립트를 원하면 여기에 추가하면 돼
-    // 예시:
-    function addMessage(text) {
-      const messages = document.getElementById("messages");
+    const sendBtn = document.getElementById("send-btn");
+    const input = document.getElementById("chat-input");
+    const messages = document.getElementById("messages");
+
+    sendBtn.addEventListener("click", sendMessage);
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    function sendMessage() {
+      const text = input.value.trim();
+      if (text === "") return;
 
       const message = document.createElement("div");
       message.className = "message";
@@ -123,7 +154,11 @@
       box.className = "cat-box";
       box.textContent = text;
 
-      const avatar = document.createElement("div");
-      avatar.className = "chat-avatar";
+      message.appendChild(box);
+      messages.appendChild(message);
 
-      box
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
