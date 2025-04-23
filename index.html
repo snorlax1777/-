@@ -48,17 +48,6 @@
       100% { text-shadow: 0 0 5px #4fc3f7; }
     }
 
-    .chat-header::after {
-      content: '';
-      position: absolute;
-      top: 12px;
-      right: 15px;
-      width: 28px;
-      height: 28px;
-      background-color: transparent;
-      background-repeat: no-repeat;
-    }
-
     .chat-messages {
       flex-grow: 1;
       background-color: #e6f7fb;
@@ -140,8 +129,8 @@
       position: absolute;
       top: -10px;
       right: -10px;
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       overflow: hidden;
       display: flex;
@@ -154,7 +143,7 @@
     .chat-avatar svg {
       width: 20px;
       height: 20px;
-      fill: #81d4fa;
+      fill: #0288d1;
     }
   </style>
 </head>
@@ -194,7 +183,7 @@
 
       avatar.innerHTML = `
         <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 4l3 10 9-6 2 3-10 6 10 6-2 3-9-6-3 10h-4l-3-10-9 6-2-3 10-6-10-6 2-3 9 6 3-10zM32 60l-3-10-9 6-2-3 10-6-10-6 2-3 9 6 3-10h4l3 10 9-6 2 3-10 6 10 6-2 3-9-6-3 10z"/>
+          <path fill="#0288d1" d="M32 4l2.8 9.4 8.5-5.7 1.8 2.9-8.9 5.6 8.9 5.6-1.8 2.9-8.5-5.7L32 28h-2l-2.8-9.4-8.5 5.7-1.8-2.9 8.9-5.6-8.9-5.6 1.8-2.9 8.5 5.7L30 4zM32 60l-2.8-9.4-8.5 5.7-1.8-2.9 8.9-5.6-8.9-5.6 1.8-2.9 8.5 5.7L30 36h2l2.8 9.4 8.5-5.7 1.8 2.9-8.9 5.6 8.9 5.6-1.8 2.9-8.5-5.7L32 60z"/>
         </svg>
       `;
 
