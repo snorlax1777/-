@@ -32,8 +32,8 @@
     }
 
     .chat-header {
-      background-color: #cfa678;  /* 연갈색으로 변경 */
-      color: #0288d1;
+      background-color: #ffffff;  /* 흰색으로 변경 */
+      color: #6f4f1f;  /* 갈색으로 변경 */
       padding: 15px;
       text-align: center;
       font-size: 18px;
@@ -49,15 +49,9 @@
 
     .chat-messages {
       flex-grow: 1;
-      background-color: #e6f7fb;
+      background-color: #f5f0e1;  /* 흰색과 연갈색의 사이 색으로 변경 */
       padding: 15px;
       overflow-y: auto;
-      animation: scroll-up 5s linear infinite;
-    }
-
-    @keyframes scroll-up {
-      0% { transform: translateY(100%); }
-      100% { transform: translateY(-100%); }
     }
 
     .message {
@@ -97,25 +91,95 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
-    /* 메세지 입력란 제거 */
     .chat-input {
-      display: none;
+      display: flex;
+      padding: 12px;
+      background-color: #e1f5fe;
+      border-top: 2px solid #b3e5fc;
     }
+
+    .chat-input input {
+      flex-grow: 1;
+      border: 2px solid #81d4fa;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 14px;
+      background-color: #ffffff;
+    }
+
+    .chat-input button {
+      margin-left: 8px;
+      background-color: #aee6f9;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .chat-input button:hover {
+      background-color: #81d4fa;
+    }
+
+    .chat-avatar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: white;
+      border: 1px solid #81d4fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;  /* 중앙에 배치하기 위한 여백 */
+    }
+
+    .chat-avatar svg {
+      width: 22px;  /* 눈꽃의 크기 */
+      height: 22px; /* 눈꽃의 크기 */
+      fill: url(#grad1); /* 하늘색과 흰색 그라디언트 */
+    }
+
+    /* 그라디언트 정의 */
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color: #00bcd4; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #ffffff; stop-opacity: 1" />
+        </linearGradient>
+      </defs>
+    </svg>
   </style>
 </head>
 <body>
   <div class="chat-container">
-    <div class="chat-header">뚜뚜뭉</div> <!-- 텍스트 변경 -->
-    <div class="chat-messages" id="messages">
-      <!-- 여기서 자동으로 올라가는 메시지가 들어가야 합니다 -->
+    <div class="chat-header">뚜뚜뭉</div> <!-- 이름 변경 -->
+    <div class="chat-messages" id="messages"></div>
+    <div class="chat-input">
+      <input type="text" id="chat-input" placeholder="메시지를 입력하세요..." />
+      <button id="send-btn">💬</button>
     </div>
   </div>
 
   <script>
+    const sendBtn = document.getElementById("send-btn");
+    const input = document.getElementById("chat-input");
     const messages = document.getElementById("messages");
 
-    // 자동으로 메시지가 올라가게 만드는 코드
-    function createMessage(text) {
+    sendBtn.addEventListener("click", sendMessage);
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    function sendMessage() {
+      const text = input.value.trim();
+      if (text === "") return;
+
       const message = document.createElement("div");
       message.className = "message";
 
@@ -123,14 +187,23 @@
       box.className = "cat-box";
       box.textContent = text;
 
+      const avatar = document.createElement("div");
+      avatar.className = "chat-avatar";
+
+      avatar.innerHTML = `
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 0l2 12 6-10 4 4-10 6 12 2-2 4-12-2 6 10-4 4-6-10-2 12h-4l-2-12-6 10-4-4 10-6-12-2 2-4 12 2-6-10 4-4 6 10 2-12h4z" fill="url(#grad1)"/>
+        </svg>
+      `;
+
+      box.appendChild(avatar);
       message.appendChild(box);
       messages.appendChild(message);
-    }
 
-    // 예시 메시지 자동 생성
-    setInterval(() => {
-      createMessage("이건 자동으로 올라가는 메시지입니다!");
-    }, 3000); // 3초마다 메시지 생성
+      input.value = "";
+      messages.scrollTop = messages.scrollHeight;
+      input.focus();
+    }
   </script>
 </body>
 </html>
