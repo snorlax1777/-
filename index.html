@@ -85,6 +85,18 @@
       border-bottom: 10px solid transparent;
     }
 
+    .chat-avatar {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 28px;
+      height: 28px;
+      background-image: url("/mnt/data/d1a2fe25-ad34-4713-926c-c53ab418ae91.png");
+      background-size: cover;
+      border-radius: 50%;
+      border: 1px solid #81d4fa;
+    }
+
     @keyframes pop-in {
       0% { opacity: 0; transform: scale(0.7); }
       80% { transform: scale(1.05); }
@@ -117,7 +129,6 @@
       height: 42px;
       cursor: pointer;
       font-size: 16px;
-      text-align: center;
     }
 
     .chat-input button:hover {
@@ -131,7 +142,7 @@
     <div class="chat-messages" id="messages"></div>
     <div class="chat-input">
       <input type="text" id="chat-input" placeholder="메시지를 입력하세요..." />
-      <button id="send-btn">💬</button>
+      <button id="send-btn">❄️</button>
     </div>
   </div>
 
@@ -156,6 +167,10 @@
       box.className = "cat-box";
       box.textContent = text;
 
+      const avatar = document.createElement("div");
+      avatar.className = "chat-avatar";
+
+      box.appendChild(avatar);
       message.appendChild(box);
       messages.appendChild(message);
 
