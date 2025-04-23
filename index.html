@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>뚜뚜뭉 채팅</title>
+  <title>치효 채팅</title>
 
   <!-- 폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Gothic+Coding&display=swap" rel="stylesheet" />
@@ -32,21 +32,21 @@
     }
 
     .chat-header {
-      background-color: #e4c4a3;  /* 상단 배경색 수정 */
-      color: #8b5f2f;  /* 이름 색 수정 */
+      background-color: #d4f5c6;  /* 연한 연두색 */
+      color: #4caf50;  /* 연두-초록 계열 */
       padding: 15px;
       text-align: center;
-      font-size: 22px;  /* 이름 크기 키움 */
+      font-size: 22px;
       font-weight: bold;
-      font-family: 'Nanum Gothic Coding', sans-serif; /* 좀 더 둥글고 부드러운 폰트 */
+      font-family: 'Nanum Gothic Coding', sans-serif;
     }
 
     .chat-messages {
       flex-grow: 1;
-      background-color: #f5e1c0;  /* 채팅 올라가는 곳 배경색 연갈색으로 수정 */
+      background-color: #f6fff2;  /* 흰색 + 연한 연두색 */
       padding: 15px;
       overflow-y: auto;
-      max-height: 400px; /* 메시지 박스 크기 고정 */
+      max-height: 400px;
     }
 
     .message {
@@ -56,8 +56,8 @@
     }
 
     .cat-box {
-      background-color: #ffffff;  /* 채팅 박스 배경색을 흰색으로 수정 */
-      border: 2px dashed #8b5f2f;  /* 윤곽선 색을 갈색으로 변경 */
+      background-color: #ffffff;
+      border: 2px dashed #4caf50;
       border-radius: 15px;
       padding: 10px 14px;
       max-width: 75%;
@@ -76,7 +76,7 @@
       width: 0;
       height: 0;
       border-top: 10px solid transparent;
-      border-right: 10px solid #8b5f2f;  /* 갈색으로 수정 */
+      border-right: 10px solid #4caf50;
       border-bottom: 10px solid transparent;
     }
 
@@ -89,22 +89,22 @@
     .chat-input {
       display: flex;
       padding: 12px;
-      background-color: #ffffff;  /* 채팅 입력창 배경색을 흰색으로 수정 */
-      border-top: 2px solid #e4c4a3;  /* 상단과 동일한 색으로 경계선 변경 */
+      background-color: #ffffff;
+      border-top: 2px solid #d4f5c6;
     }
 
     .chat-input input {
       flex-grow: 1;
-      border: 2px solid #8b5f2f;  /* 채팅 입력창 윤곽선 색을 갈색으로 수정 */
+      border: 2px solid #4caf50;
       border-radius: 20px;
       padding: 8px 12px;
       font-size: 14px;
-      background-color: #ffffff;  /* 입력창 배경을 흰색으로 변경 */
+      background-color: #ffffff;
     }
 
     .chat-input button {
       margin-left: 8px;
-      background-color: #8b5f2f;  /* 버튼 배경색을 갈색으로 수정 */
+      background-color: #4caf50;  /* 초록색 */
       border: none;
       border-radius: 50%;
       color: white;
@@ -115,10 +115,9 @@
     }
 
     .chat-input button:hover {
-      background-color: #7a4e33;  /* 버튼 호버 시 색상 변화 */
+      background-color: #388e3c;
     }
 
-    /* .chat-avatar 삭제: 이제 더 이상 동그란 빈칸이 뜨지 않도록 변경 */
     .chat-avatar {
       display: none;
     }
@@ -126,7 +125,7 @@
 </head>
 <body>
   <div class="chat-container">
-    <div class="chat-header">뚜뚜뭉</div> <!-- 이름 변경 -->
+    <div class="chat-header">치효</div>
     <div class="chat-messages" id="messages"></div>
     <div class="chat-input">
       <input type="text" id="chat-input" placeholder="메시지를 입력하세요..." />
