@@ -1,1 +1,183 @@
-https://weflab.com/page/hN_G2suWlmBoYg
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>설하임 채팅</title>
+
+  <!-- 폰트 -->
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Gowun Dodum', sans-serif;
+      background-color: #f0faff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chat-container {
+      width: 100%;
+      max-width: 360px;
+      height: 540px;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background-color: #b3e5fc;
+      color: #0288d1;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      animation: glow 2s infinite;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #4fc3f7; }
+      50% { text-shadow: 0 0 10px #81d4fa; }
+      100% { text-shadow: 0 0 5px #4fc3f7; }
+    }
+
+    .chat-messages {
+      flex-grow: 1;
+      background-color: #e6f7fb;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .message {
+      display: flex;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .cat-box {
+      background-color: #daf2f9;
+      border: 2px dashed #81d4fa;
+      border-radius: 15px;
+      padding: 10px 14px;
+      max-width: 75%;
+      word-break: break-word;
+      font-size: 15px;
+      color: #333;
+      position: relative;
+      animation: pop-in 0.3s ease-out;
+    }
+
+    .cat-box::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: -10px;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-right: 10px solid #81d4fa;
+      border-bottom: 10px solid transparent;
+    }
+
+    .chat-avatar {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 28px;
+      height: 28px;
+      background-image: url("https://i.imgur.com/j0XSkmK.png"); /* 이미지 경로 변경 가능 */
+      background-size: cover;
+      border-radius: 50%;
+      border: 1px solid #81d4fa;
+    }
+
+    @keyframes pop-in {
+      0% { opacity: 0; transform: scale(0.7); }
+      80% { transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 12px;
+      background-color: #e1f5fe;
+      border-top: 2px solid #b3e5fc;
+    }
+
+    .chat-input input {
+      flex-grow: 1;
+      border: 2px solid #81d4fa;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 14px;
+      background-color: #ffffff;
+    }
+
+    .chat-input button {
+      margin-left: 8px;
+      background-color: #aee6f9;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .chat-input button:hover {
+      background-color: #81d4fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">설하임</div>
+    <div class="chat-messages" id="messages"></div>
+    <div class="chat-input">
+      <input type="text" id="chat-input" placeholder="메시지를 입력하세요..." />
+      <button id="send-btn">💬</button>
+    </div>
+  </div>
+
+  <script>
+    const sendBtn = document.getElementById("send-btn");
+    const input = document.getElementById("chat-input");
+    const messages = document.getElementById("messages");
+
+    sendBtn.addEventListener("click", sendMessage);
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    function sendMessage() {
+      const text = input.value.trim();
+      if (text === "") return;
+
+      const message = document.createElement("div");
+      message.className = "message";
+
+      const box = document.createElement("div");
+      box.className = "cat-box";
+      box.textContent = text;
+
+      const avatar = document.createElement("div");
+      avatar.className = "chat-avatar";
+
+      box.appendChild(avatar);
+      message.appendChild(box);
+      messages.appendChild(message);
+
+      input.value = "";
+      messages.scrollTop = messages.scrollHeight;
+      input.focus();
+    }
+  </script>
+</body>
+</html>
