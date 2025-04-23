@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>설하임 채팅</title>
+  <title>뚜뚜뭉 채팅</title>
 
   <!-- 폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet" />
@@ -32,7 +32,7 @@
     }
 
     .chat-header {
-      background-color: #b3e5fc;
+      background-color: #cfa678;  /* 연갈색으로 변경 */
       color: #0288d1;
       padding: 15px;
       text-align: center;
@@ -52,6 +52,12 @@
       background-color: #e6f7fb;
       padding: 15px;
       overflow-y: auto;
+      animation: scroll-up 5s linear infinite;
+    }
+
+    @keyframes scroll-up {
+      0% { transform: translateY(100%); }
+      100% { transform: translateY(-100%); }
     }
 
     .message {
@@ -91,64 +97,25 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
+    /* 메세지 입력란 제거 */
     .chat-input {
-      display: flex;
-      padding: 12px;
-      background-color: #e1f5fe;
-      border-top: 2px solid #b3e5fc;
-    }
-
-    .chat-input input {
-      flex-grow: 1;
-      border: 2px solid #81d4fa;
-      border-radius: 20px;
-      padding: 8px 12px;
-      font-size: 14px;
-      background-color: #ffffff;
-    }
-
-    .chat-input button {
-      margin-left: 8px;
-      background-color: #aee6f9;
-      border: none;
-      border-radius: 50%;
-      color: white;
-      width: 42px;
-      height: 42px;
-      cursor: pointer;
-      font-size: 16px;
-      text-align: center;
-    }
-
-    .chat-input button:hover {
-      background-color: #81d4fa;
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="chat-container">
-    <div class="chat-header">설하임</div>
-    <div class="chat-messages" id="messages"></div>
-    <div class="chat-input">
-      <input type="text" id="chat-input" placeholder="메시지를 입력하세요..." />
-      <button id="send-btn">💬</button>
+    <div class="chat-header">뚜뚜뭉</div> <!-- 텍스트 변경 -->
+    <div class="chat-messages" id="messages">
+      <!-- 여기서 자동으로 올라가는 메시지가 들어가야 합니다 -->
     </div>
   </div>
 
   <script>
-    const sendBtn = document.getElementById("send-btn");
-    const input = document.getElementById("chat-input");
     const messages = document.getElementById("messages");
 
-    sendBtn.addEventListener("click", sendMessage);
-    input.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") sendMessage();
-    });
-
-    function sendMessage() {
-      const text = input.value.trim();
-      if (text === "") return;
-
+    // 자동으로 메시지가 올라가게 만드는 코드
+    function createMessage(text) {
       const message = document.createElement("div");
       message.className = "message";
 
@@ -158,11 +125,12 @@
 
       message.appendChild(box);
       messages.appendChild(message);
-
-      input.value = "";
-      messages.scrollTop = messages.scrollHeight;
-      input.focus();
     }
+
+    // 예시 메시지 자동 생성
+    setInterval(() => {
+      createMessage("이건 자동으로 올라가는 메시지입니다!");
+    }, 3000); // 3초마다 메시지 생성
   </script>
 </body>
 </html>
