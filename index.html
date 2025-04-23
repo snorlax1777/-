@@ -87,15 +87,18 @@
 
     .chat-avatar {
       position: absolute;
-      top: 10px;
-      left: -35px;
+      top: -10px;
+      right: -35px;
       width: 50px;
       height: 50px;
-      background-image: url("https://cdn.pixabay.com/photo/2017/07/18/10/30/cat-2516790_960_720.png");
-      background-size: cover;
-      border-radius: 50%;
-      border: 1px solid #81d4fa;
       transform: rotate(45deg);
+    }
+
+    .chat-avatar img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     @keyframes pop-in {
@@ -170,6 +173,7 @@
 
       const avatar = document.createElement("div");
       avatar.className = "chat-avatar";
+      avatar.innerHTML = '<img src="https://cdn.pixabay.com/photo/2017/08/30/10/07/cat-2694937_960_720.jpg" alt="귀여운 고양이" />';
 
       box.appendChild(avatar);
       message.appendChild(box);
