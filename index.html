@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>치효 채팅</title>
+  <title>단쵸 채팅</title>
 
   <!-- 폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Gothic+Coding&display=swap" rel="stylesheet" />
@@ -32,8 +32,8 @@
     }
 
     .chat-header {
-      background-color: #d4f5c6;  /* 연한 연두색 */
-      color: #4caf50;  /* 연두-초록 계열 */
+      background-color: #ffe1e1;  /* 연한 빨간색 */
+      color: #e53935;  /* 빨간색 */
       padding: 15px;
       text-align: center;
       font-size: 22px;
@@ -43,7 +43,7 @@
 
     .chat-messages {
       flex-grow: 1;
-      background-color: #f6fff2;  /* 흰색 + 연한 연두색 */
+      background-color: #fff6f6;  /* 흰색 + 연한 빨간색 계열 */
       padding: 15px;
       overflow-y: auto;
       max-height: 400px;
@@ -57,7 +57,7 @@
 
     .cat-box {
       background-color: #ffffff;
-      border: 2px dashed #4caf50;
+      border: 2px dashed #e53935;
       border-radius: 15px;
       padding: 10px 14px;
       max-width: 75%;
@@ -76,7 +76,7 @@
       width: 0;
       height: 0;
       border-top: 10px solid transparent;
-      border-right: 10px solid #4caf50;
+      border-right: 10px solid #e53935;
       border-bottom: 10px solid transparent;
     }
 
@@ -90,12 +90,12 @@
       display: flex;
       padding: 12px;
       background-color: #ffffff;
-      border-top: 2px solid #d4f5c6;
+      border-top: 2px solid #ffe1e1;
     }
 
     .chat-input input {
       flex-grow: 1;
-      border: 2px solid #4caf50;
+      border: 2px solid #e53935;
       border-radius: 20px;
       padding: 8px 12px;
       font-size: 14px;
@@ -104,7 +104,7 @@
 
     .chat-input button {
       margin-left: 8px;
-      background-color: #4caf50;  /* 초록색 */
+      background-color: #e53935;  /* 빨간색 */
       border: none;
       border-radius: 50%;
       color: white;
@@ -115,7 +115,7 @@
     }
 
     .chat-input button:hover {
-      background-color: #388e3c;
+      background-color: #c62828;
     }
 
     .chat-avatar {
@@ -125,7 +125,7 @@
 </head>
 <body>
   <div class="chat-container">
-    <div class="chat-header">치효</div>
+    <div class="chat-header">단쵸</div>
     <div class="chat-messages" id="messages"></div>
     <div class="chat-input">
       <input type="text" id="chat-input" placeholder="메시지를 입력하세요..." />
