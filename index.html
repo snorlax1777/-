@@ -1,163 +1,105 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>치지직 청청아 채팅</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Gothic+Coding&display=swap" rel="stylesheet" />
-
   <style>
     body {
       margin: 0;
-      font-family: 'Gowun Dodum', sans-serif;
-      background-color: #f0faff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #eef6ff; /* 연한 남색 느낌 */
+    }
+
+    .header {
+      background-color: #d3eaff; /* 연한 남색 */
+      color: #003366;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
     }
 
     .chat-container {
-      width: 100%;
-      max-width: 360px;
-      height: 540px;
-      background-color: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .chat-header {
-      background-color: #d6eaff;  /* 연한 파랑 */
-      color: #5c9dff;  /* 메인 파랑 */
-      padding: 15px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      font-family: 'Nanum Gothic Coding', sans-serif;
-    }
-
-    .chat-messages {
-      flex-grow: 1;
-      background-color: #f2f8ff;  /* 거의 흰색에 가까운 연파랑 */
-      padding: 15px;
-      overflow-y: auto;
-      max-height: 400px;
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #f7fbff; /* 흰색 + 연한 남색 중간 */
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      position: relative;
     }
 
     .message {
-      display: flex;
+      background-color: #ffffff;
+      padding: 14px 16px;
+      border-radius: 16px;
       margin-bottom: 12px;
+      color: #003366;
       position: relative;
+      display: inline-block;
+      max-width: 80%;
     }
 
-    .cat-box {
-      background-color: #ffffff;
-      border: 2px dashed #5c9dff;
-      border-radius: 15px;
-      padding: 10px 14px;
-      max-width: 75%;
-      word-break: break-word;
-      font-size: 15px;
-      color: #333;
-      position: relative;
-      animation: pop-in 0.3s ease-out;
+    .username {
+      color: #003366; /* 남색 */
+      font-weight: bold;
+      margin-bottom: 6px;
     }
 
-    .cat-box::before {
-      content: '';
+    .chat-character {
       position: absolute;
-      top: 10px;
-      left: -10px;
-      width: 0;
-      height: 0;
-      border-top: 10px solid transparent;
-      border-right: 10px solid #5c9dff;
-      border-bottom: 10px solid transparent;
-    }
-
-    @keyframes pop-in {
-      0% { opacity: 0; transform: scale(0.7); }
-      80% { transform: scale(1.05); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
-    .chat-input {
-      display: flex;
-      padding: 12px;
-      background-color: #ffffff;
-      border-top: 2px solid #d6eaff;
-    }
-
-    .chat-input input {
-      flex-grow: 1;
-      border: 2px solid #5c9dff;
-      border-radius: 20px;
-      padding: 8px 12px;
-      font-size: 14px;
-      background-color: #ffffff;
-    }
-
-    .chat-input button {
-      margin-left: 8px;
-      background-color: #5c9dff;
-      border: none;
+      top: -30px;
+      right: -30px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .input-area {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px 0 0 8px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .input-area button {
+      background-color: #5c9dff;
       color: white;
-      width: 42px;
-      height: 42px;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 0 8px 8px 0;
       cursor: pointer;
-      font-size: 16px;
+      font-weight: bold;
     }
 
-    .chat-input button:hover {
-      background-color: #428ce9;
-    }
-
-    .chat-avatar {
-      display: none;
+    .input-area button:hover {
+      background-color: #478ee6;
     }
   </style>
 </head>
 <body>
+  <div class="header">치지직 청청아의 채팅창</div>
+
   <div class="chat-container">
-    <div class="chat-header">치지직 청청아</div>
-    <div class="chat-messages" id="messages"></div>
-    <div class="chat-input">
-      <input type="text" id="chat-input" placeholder="메시지를 입력하세요..." />
-      <button id="send-btn">💬</button>
+    <img src="https://raw.githubusercontent.com/사용자명/레포명/브랜치명/경로/892c1f5a-c5a0-4cbe-a98e-9ecf0bae4095.png" class="chat-character" alt="캐릭터" />
+    
+    <div class="message">
+      <div class="username">청청아</div>
+      안녕하세요! 오늘도 치지직~ 🐰
+    </div>
+
+    <div class="input-area">
+      <input type="text" placeholder="메시지를 입력하세요...">
+      <button>입력</button>
     </div>
   </div>
-
-  <script>
-    const sendBtn = document.getElementById("send-btn");
-    const input = document.getElementById("chat-input");
-    const messages = document.getElementById("messages");
-
-    sendBtn.addEventListener("click", sendMessage);
-    input.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") sendMessage();
-    });
-
-    function sendMessage() {
-      const text = input.value.trim();
-      if (text === "") return;
-
-      const message = document.createElement("div");
-      message.className = "message";
-
-      const box = document.createElement("div");
-      box.className = "cat-box";
-      box.textContent = text;
-
-      message.appendChild(box);
-      messages.appendChild(message);
-
-      input.value = "";
-    }
-  </script>
 </body>
 </html>
