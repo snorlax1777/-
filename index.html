@@ -1,88 +1,68 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- 귀여운 글꼴 불러오기 -->
-  <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/UhBeeSeulvely.woff" rel="stylesheet" as="font" type="font/woff" crossorigin>
-  <style>
-    @font-face {
-      font-family: 'UhBee Seulvely';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/UhBeeSeulvely.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
-    }
+@font-face {
+  font-family: 'BMYEONSUNGOTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/BMYEONSUNGOTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
-    body {
-      margin: 0;
-      padding: 0;
-      background: transparent;
-      font-family: 'UhBee Seulvely', sans-serif;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-family: 'BMYEONSUNGOTF', sans-serif;
+  overflow: hidden;
+}
 
-    .chat-container {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: flex-start;
-      padding: 1rem;
-      gap: 0.5rem;
-      pointer-events: none;
-    }
+.chat-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  padding: 1rem;
+  gap: 0.5rem;
+  pointer-events: none;
+}
 
-    .chat-bubble {
-      position: relative;
-      max-width: 80%;
-      background: #fff;
-      color: #000;
-      padding: 0.75rem 1rem;
-      border-radius: 1rem;
-      pointer-events: auto;
-      animation: fadeInUp 0.3s ease-out;
-      word-break: break-word;
-      border: 2px solid #d2b48c; /* ✅ 채팅 박스 테두리는 유지 */
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
+.chat-bubble {
+  position: relative;
+  max-width: 80%;
+  background: #fff;
+  color: #000;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  border: 2px solid #d2b48c;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
+  animation: fadeInUp 0.3s ease-out;
+  word-break: break-word;
+  font-size: 1rem;
+}
 
-    .chat-bubble .character {
-      position: absolute;
-      top: -18px;
-      right: -18px;
-      width: 36px;
-      height: 36px;
-    }
+.chat-bubble .character {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 36px;
+  height: 36px;
+}
 
-    .chat-bubble .character img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      /* ❌ 원형 및 테두리 제거 */
-    }
+.chat-bubble .character img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="chat-container">
-    <!-- 예시 채팅입니다. 실제 방송에선 위플랩이 채팅을 자동 추가합니다. -->
-    <div class="chat-bubble">
-      생방송 시작했어요! 다들 어서 와~
-      <div class="character">
-        <img src="https://cdn.discordapp.com/attachments/1346415542105411677/1380035217112305815/bf9c86ccf833310f.jpg?ex=684e46f3&is=684cf573&hm=dfcd39723dbc14e1bb9642d15a40a3e4096cad95791b8f4c7ac859ea52a1a9b8&" alt="캐릭터" />
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+/* 채팅 등장 애니메이션 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
