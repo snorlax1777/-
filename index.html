@@ -1,6 +1,9 @@
+<!-- 폰트 로드 (CDN) -->
+<link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/SpoqaHanSansNeo-Regular.woff" rel="stylesheet" as="font" type="font/woff" crossorigin="anonymous">
+<style>
 @font-face {
-  font-family: 'BMYEONSUNGOTF';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/BMYEONSUNGOTF.woff') format('woff');
+  font-family: 'SpoqaHanSansNeo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -9,21 +12,18 @@ body {
   margin: 0;
   padding: 0;
   background: transparent;
-  font-family: 'BMYEONSUNGOTF', sans-serif;
+  font-family: 'SpoqaHanSansNeo', sans-serif;
   overflow: hidden;
 }
 
 .chat-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-start;
-  padding: 1rem;
   gap: 0.5rem;
+  padding: 1rem;
   pointer-events: none;
+  height: 100vh;
 }
 
 .chat-bubble {
@@ -33,7 +33,7 @@ body {
   color: #000;
   padding: 0.75rem 1rem;
   border-radius: 1rem;
-  border: 2px solid #d2b48c;
+  border: 2px solid #d2b48c; /* 연갈색 외곽선 */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   pointer-events: auto;
   animation: fadeInUp 0.3s ease-out;
@@ -41,6 +41,7 @@ body {
   font-size: 1rem;
 }
 
+/* 캐릭터 이미지 */
 .chat-bubble .character {
   position: absolute;
   top: -18px;
@@ -53,6 +54,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  content: url("https://i.imgur.com/IUAhMUa.png");
 }
 
 @keyframes fadeInUp {
@@ -65,3 +67,4 @@ body {
     transform: translateY(0);
   }
 }
+</style>
