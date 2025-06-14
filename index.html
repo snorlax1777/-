@@ -1,104 +1,86 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>치지직 청청아 채팅</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
-      font-family: 'Noto Sans KR', sans-serif;
-      background-color: #eef6ff; /* 연한 남색 느낌 */
-    }
-
-    .header {
-      background-color: #d3eaff; /* 연한 남색 */
-      color: #003366;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
+      padding: 0;
+      background: transparent;
+      font-family: 'Pretendard', sans-serif;
     }
 
     .chat-container {
-      max-width: 600px;
-      margin: 20px auto;
-      background-color: #f7fbff; /* 흰색 + 연한 남색 중간 */
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      position: relative;
-    }
-
-    .message {
-      background-color: #ffffff;
-      padding: 14px 16px;
-      border-radius: 16px;
-      margin-bottom: 12px;
-      color: #003366;
-      position: relative;
-      display: inline-block;
-      max-width: 80%;
-    }
-
-    .username {
-      color: #003366; /* 남색 */
-      font-weight: bold;
-      margin-bottom: 6px;
-    }
-
-    .chat-character {
-      position: absolute;
-      top: -30px;
-      right: -30px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 2px solid white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .input-area {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       display: flex;
-      margin-top: 20px;
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      padding: 1rem;
+      gap: 0.5rem;
+      pointer-events: none;
     }
 
-    .input-area input {
-      flex: 1;
-      padding: 12px;
-      border-radius: 8px 0 0 8px;
-      border: 1px solid #ccc;
-      outline: none;
+    .chat-bubble {
+      position: relative;
+      max-width: 80%;
+      background: #e8f2ff; /* 연한 남색 느낌 */
+      color: #000;
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      pointer-events: auto;
+      animation: fadeInUp 0.3s ease-out;
+      word-break: break-word;
     }
 
-    .input-area button {
-      background-color: #5c9dff;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 0 8px 8px 0;
-      cursor: pointer;
+    .chat-bubble .name {
       font-weight: bold;
+      color: #003366; /* 남색 */
+      margin-bottom: 0.25rem;
+      display: block;
     }
 
-    .input-area button:hover {
-      background-color: #478ee6;
+    .chat-bubble .character {
+      position: absolute;
+      top: -25px;
+      right: -25px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: transparent;
+    }
+
+    .chat-bubble .character img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="header">치지직 청청아의 채팅창</div>
-
   <div class="chat-container">
-    <img src="https://raw.githubusercontent.com/사용자명/레포명/브랜치명/경로/892c1f5a-c5a0-4cbe-a98e-9ecf0bae4095.png" class="chat-character" alt="캐릭터" />
-    
-    <div class="message">
-      <div class="username">청청아</div>
-      안녕하세요! 오늘도 치지직~ 🐰
-    </div>
-
-    <div class="input-area">
-      <input type="text" placeholder="메시지를 입력하세요...">
-      <button>입력</button>
+    <!-- 예시 채팅 -->
+    <div class="chat-bubble">
+      <span class="name">치지직 청청아</span>
+      생방송 시작했어요! 다들 어서 와~
+      <div class="character">
+        <img src="25cec092-77f2-4bb4-bd18-14388e2cd01c.png" alt="캐릭터" />
+      </div>
     </div>
   </div>
 </body>
