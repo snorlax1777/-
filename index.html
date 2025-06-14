@@ -27,21 +27,13 @@
     .chat-bubble {
       position: relative;
       max-width: 80%;
-      background: #e8f2ff; /* 연한 남색 느낌 */
+      background: transparent;
       color: #000;
       padding: 0.75rem 1rem;
       border-radius: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       pointer-events: auto;
       animation: fadeInUp 0.3s ease-out;
       word-break: break-word;
-    }
-
-    .chat-bubble .name {
-      font-weight: bold;
-      color: #003366; /* 남색 */
-      margin-bottom: 0.25rem;
-      display: block;
     }
 
     .chat-bubble .character {
@@ -50,8 +42,6 @@
       right: -25px;
       width: 50px;
       height: 50px;
-      border-radius: 50%;
-      background-color: transparent;
     }
 
     .chat-bubble .character img {
@@ -74,12 +64,11 @@
 </head>
 <body>
   <div class="chat-container">
-    <!-- 예시 채팅 -->
+    <!-- 아래 예시 채팅은 테스트용입니다. 실제 방송에서는 위플랩이 자동으로 채팅을 추가합니다. -->
     <div class="chat-bubble">
-      <span class="name">치지직 청청아</span>
       생방송 시작했어요! 다들 어서 와~
       <div class="character">
-        <img src="25cec092-77f2-4bb4-bd18-14388e2cd01c.png" alt="캐릭터" />
+        <img src="https://cdn.discordapp.com/attachments/1346415542105411677/1380035217112305815/bf9c86ccf833310f.jpg?ex=684e46f3&is=684cf573&hm=dfcd39723dbc14e1bb9642d15a40a3e4096cad95791b8f4c7ac859ea52a1a9b8&" alt="캐릭터" />
       </div>
     </div>
   </div>
