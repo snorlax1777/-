@@ -4,19 +4,15 @@
   <meta charset="UTF-8" />
   <title>채팅 테스트</title>
   <style>
-    @font-face {
-      font-family: 'BMYEONSUNGOTF';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2107@1.1/BMYEONSUNGOTF.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
-    }
+    /* 자막 스타일 폰트 불러오기 (Pretendard) */
+    @import url('https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/variable/pretendardvariable.css');
 
     body {
       margin: 0;
       padding: 0;
       background: transparent;
-      font-family: 'BMYEONSUNGOTF', sans-serif;
-      overflow: hidden; /* ← 스크롤 방지 */
+      font-family: 'Pretendard', sans-serif;
+      overflow: hidden;
     }
 
     .chat-container {
@@ -32,16 +28,22 @@
     .chat-bubble {
       position: relative;
       max-width: 80%;
-      background: #fff;
-      color: #000;
+      background: rgba(0, 0, 0, 0.6); /* 반투명 검정 배경 */
+      color: white;
       padding: 0.75rem 1rem;
       border-radius: 1rem;
-      border: 2px solid #d2b48c;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       pointer-events: auto;
       animation: fadeInUp 0.3s ease-out;
       word-break: break-word;
-      font-size: 1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000; /* 자막 스타일 외곽선 */
     }
 
     .chat-bubble .character {
@@ -75,16 +77,16 @@
 
   <script>
     const messages = [
-      "뚜하",
-      "오늘 방송도 얼마나 뚜바뚜보이실지 기대되네요ㅎ!",
-      "뚜뚜님 그거 아세여? 뚜둥이들 너무 멋진거 같아요 😍",
-      "뚜바뚜보~",
+      "안녕하세요~",
+      "오늘 방송도 기대돼요!",
+      "캐릭터 너무 귀엽다 😍",
+      "좋아요 누르고 갑니다~",
       "ㅋㅋㅋㅋㅋㅋㅋㅋ",
-      "오늘 점심에 뭐 드셨나여?",
-      "맛난거 드시네! 돼지뚜!!",
-      "와 진짜 혼자 맛난거 먹기에여?!~",
-      "귀엽네요",
-      "채팅창이ㅎ 캬캬캬컄"
+      "오늘 점심 뭐 드셨어요?",
+      "소통 짱이에요!",
+      "와 진짜 이쁘다~",
+      "채팅창 너무 귀여워요",
+      "다음 게임 뭐예요?"
     ];
 
     const chatContainer = document.getElementById("chatContainer");
