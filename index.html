@@ -1,88 +1,76 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <title>채팅 자막 스타일</title>
+  <meta charset="UTF-8">
+  <title>채팅 오버레이</title>
   <style>
-    @import url('https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/variable/pretendardvariable.css');
+    @font-face {
+      font-family: 'JJamJak';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/Jalnan2.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       background: transparent;
-      font-family: 'Pretendard', sans-serif;
       overflow: hidden;
     }
 
-    .chat-container {
+    #chat-container {
+      position: fixed;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      flex-direction: column-reverse;
-      align-items: flex-start;
-      gap: 0.5rem;
-      padding: 1rem;
+      flex-direction: column;
+      gap: 6px;
       pointer-events: none;
-      height: 100vh;
     }
 
     .chat-bubble {
+      font-family: 'JJamJak', sans-serif;
       font-size: 1.6rem;
       font-weight: 900;
-      color: white;
-      text-shadow:
-        -2px -2px 0 black,
-         2px -2px 0 black,
-        -2px  2px 0 black,
-         2px  2px 0 black;
+      color: #ffeb3b;
       background: transparent;
       border: none;
       padding: 0;
       margin: 0;
-      pointer-events: auto;
+      transform: skew(-7deg);
+      text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
       animation: fadeInUp 0.3s ease-out;
+      pointer-events: auto;
       word-break: break-word;
+      display: inline-block;
     }
 
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(20px) skew(-7deg);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) skew(-7deg);
       }
     }
   </style>
 </head>
 <body>
-  <div class="chat-container" id="chatContainer"></div>
-
-  <script>
-    const messages = [
-      "ㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
-      "안녕하세요~",
-      "와 진짜 이쁘다",
-      "헉 목소리 뭐야..",
-      "존예다..",
-      "고양이 같다!",
-      "오늘도 잘 보고 갑니다~",
-    ];
-
-    const chatContainer = document.getElementById("chatContainer");
-    let index = 0;
-
-    function addChat() {
-      const bubble = document.createElement("div");
-      bubble.className = "chat-bubble";
-      bubble.textContent = messages[index % messages.length];
-      chatContainer.prepend(bubble);
-      index++;
-      if (chatContainer.children.length > 15) {
-        chatContainer.removeChild(chatContainer.lastChild);
-      }
-    }
-
-    setInterval(addChat, 1500);
-  </script>
+  <div id="chat-container">
+    <div class="chat-bubble">ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</div>
+    <div class="chat-bubble">안녕하세요~</div>
+    <div class="chat-bubble">와 진짜 이쁘다</div>
+    <div class="chat-bubble">헉 목소리 뭐야..</div>
+    <div class="chat-bubble">존예다..</div>
+    <div class="chat-bubble">고양이 같다!</div>
+    <div class="chat-bubble">오늘도 잘 보고 갑니다~</div>
+  </div>
 </body>
 </html>
