@@ -2,9 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>채팅 테스트</title>
+  <title>채팅 자막 스타일</title>
   <style>
-    /* 자막 스타일 폰트 불러오기 (Pretendard) */
     @import url('https://cdn.jsdelivr.net/npm/pretendard@latest/dist/web/variable/pretendardvariable.css');
 
     body {
@@ -26,38 +25,21 @@
     }
 
     .chat-bubble {
-      position: relative;
-      max-width: 80%;
-      background: rgba(0, 0, 0, 0.6); /* 반투명 검정 배경 */
+      font-size: 1.6rem;
+      font-weight: 900;
       color: white;
-      padding: 0.75rem 1rem;
-      border-radius: 1rem;
+      text-shadow:
+        -2px -2px 0 black,
+         2px -2px 0 black,
+        -2px  2px 0 black,
+         2px  2px 0 black;
+      background: transparent;
       border: none;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      padding: 0;
+      margin: 0;
       pointer-events: auto;
       animation: fadeInUp 0.3s ease-out;
       word-break: break-word;
-      font-size: 1.2rem;
-      font-weight: 700;
-      text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000; /* 자막 스타일 외곽선 */
-    }
-
-    .chat-bubble .character {
-      position: absolute;
-      top: -18px;
-      right: -18px;
-      width: 36px;
-      height: 36px;
-    }
-
-    .chat-bubble .character img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
     }
 
     @keyframes fadeInUp {
@@ -77,16 +59,13 @@
 
   <script>
     const messages = [
+      "ㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
       "안녕하세요~",
-      "오늘 방송도 기대돼요!",
-      "캐릭터 너무 귀엽다 😍",
-      "좋아요 누르고 갑니다~",
-      "ㅋㅋㅋㅋㅋㅋㅋㅋ",
-      "오늘 점심 뭐 드셨어요?",
-      "소통 짱이에요!",
-      "와 진짜 이쁘다~",
-      "채팅창 너무 귀여워요",
-      "다음 게임 뭐예요?"
+      "와 진짜 이쁘다",
+      "헉 목소리 뭐야..",
+      "존예다..",
+      "고양이 같다!",
+      "오늘도 잘 보고 갑니다~",
     ];
 
     const chatContainer = document.getElementById("chatContainer");
@@ -95,12 +74,7 @@
     function addChat() {
       const bubble = document.createElement("div");
       bubble.className = "chat-bubble";
-      bubble.innerHTML = `
-        ${messages[index % messages.length]}
-        <div class="character">
-          <img src="https://i.imgur.com/IUAhMUa.png" alt="캐릭터" />
-        </div>
-      `;
+      bubble.textContent = messages[index % messages.length];
       chatContainer.prepend(bubble);
       index++;
       if (chatContainer.children.length > 15) {
